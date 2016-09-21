@@ -1,10 +1,15 @@
 package com.abc;
 
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateProvider {
     private static DateProvider instance = null;
+    private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+
+    private static final SimpleDateFormat defaultDateFormat = new SimpleDateFormat(DEFAULT_DATE_FORMAT);
+    private DateProvider() {
+    }
 
     public static DateProvider getInstance() {
         if (instance == null)
@@ -13,6 +18,10 @@ public class DateProvider {
     }
 
     public Date now() {
-        return Calendar.getInstance().getTime();
+        return new Date();
+    }
+
+    public static SimpleDateFormat getDefaultDateFormat() {
+        return defaultDateFormat;
     }
 }
